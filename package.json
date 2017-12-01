@@ -2,7 +2,7 @@
   "name": "ProteinSequenceAlignmentGUI",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/hbootwalla/ProteinSequenceAlignmentGUI.git",
+  "repository": "https://github.com/hbootwalla/protein-seq-alignment-gui.git",
   "author": "Sanchit Sharma <sanchitsharma343@ufl.edu>",
   "license": "MIT",
   "scripts": {
