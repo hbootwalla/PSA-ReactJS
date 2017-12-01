@@ -1,0 +1,22 @@
+.queryTag{
+    font-weight: bold;
+}
+
+.mainContainer {
+    padding-top: 40px;
+}
+
+.table.resultTable {
+    max-width : 30%;
+    text-align: center;
+}
+
+.rotate-45-right {
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.cellMarked{
+    background-color: lightblue;
+}
