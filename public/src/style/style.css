@@ -20,3 +20,58 @@
 .cellMarked{
     background-color: lightblue;
 }
+
+.row{
+    padding: 30px 30px 30px 30px;
+
+}
+
+.form-group{
+    padding-bottom: 15px;
+}
+
+.button-group{
+    padding-bottom: 15px;
+}
+
+.btn-secondary{
+    padding-right: 10px;
+    background-color: teal;
+}
+
+.alignment-type{
+    padding-bottom: 15px;
+}
+
+.matrix-type{
+    padding-bottom: 15px;
+}
+
+
+nav {
+    text-align: center;
+    margin: 0px 0 0 ;
+    padding: 10px 0;
+    padding-bottom: 10px;
+    background-color: teal;
+    }
+    
+    
+    nav li {
+       display: inline-block;
+       padding: 5px 5px;
+    }
+    
+    nav a {
+      font-weight: normal;
+      padding: 10px 5px;
+      color: #FF5400
+    }
+   
+    nav ul{
+        list-style: none;
+        margin: 0 2px;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+      }

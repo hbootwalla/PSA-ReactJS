@@ -52,21 +52,20 @@ function iterate(row, rowIndex){
 
     return (
             <div>            
-            <table className="table table-bordered table-striped">
-            <thead>
+                    <table className="table table-bordered table-striped">
+                        <thead>
 
-                <tr>
-                    <th>hi</th>
-                    {titles}
-                    
-                </tr>
-                
-            </thead>
-            <tbody>
-            {matrixValues}    
-            </tbody>
-            </table>
-            {resultDiv()}
+                            <tr>
+                                {titles}
+                                
+                            </tr>
+                            
+                        </thead>
+                        <tbody>
+                        {matrixValues}    
+                        </tbody>
+                    </table>
+                    {resultDiv()}
             </div>
     );
 

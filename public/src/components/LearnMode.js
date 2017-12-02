@@ -2,7 +2,7 @@ import React from 'react';
 import QueryBox from './QueryBox';
 import ResultBox from './ResultBox';
 
-export default class MainComponent extends React.Component{
+export default class LearnMode extends React.Component{
   constructor(props){
     super(props);
     this.state = {query: '', database: '', queryResult: '', databaseResult: '', matrix: [], gap: 0};
@@ -18,9 +18,15 @@ export default class MainComponent extends React.Component{
 
   render(){
     return (
-      <div className="jumbotron">
-        <QueryBox onQueryChange = {(query) => this.queryChange(query)}/>
-        <ResultBox query={this.state} /> 
+      <div>
+          <div className="row">
+          <div className="col-md-3">
+            <QueryBox onQueryChange = {(query) => this.queryChange(query)}/>
+          </div>
+          <div className="col-md-9 jumbotron">
+            <ResultBox query={this.state} /> 
+          </div>
+          </div>
       </div>
     );
   }
