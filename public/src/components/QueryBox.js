@@ -3,7 +3,17 @@ import React from 'react';
 export default class QueryBox extends React.Component{
     constructor(props){
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {queryString: '', databaseString:'', gap: 0};
+        
+    }
+
+    handleSubmit(event){
+        if(this.props.mode.learn === true)
+            this.setInput(event);
+        else if(this.props.mode.diy === true){
+            this.props.display(this.state);
+        }
     }
 
     setInput(props){
@@ -55,16 +65,16 @@ export default class QueryBox extends React.Component{
 
                 <div className="btn-group" data-toggle="buttons">
 
-                    <label className="btn btn-secondary">
+                    <label className="btn btn-dark">
                     <input type="radio" name="options" id="option1" onChange={console.log('selected')} checked/>
                     Global </label>
 
-                    <label className="btn btn-secondary">
+                    <label className="btn btn-dark">
                     <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
                     Local
                     </label>
 
-                    <label className="btn btn-secondary">
+                    <label className="btn btn-dark">
                     <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
                     Dovetail
                     </label>
@@ -76,16 +86,16 @@ export default class QueryBox extends React.Component{
                 <div>Select the Scoring Matrix</div>
                     <div className="btn-group" data-toggle="buttons">
                 
-                                    <label className="btn btn-secondary">
+                                    <label className="btn btn-dark">
                                     <input type="radio" name="options" id="option1" onChange={console.log('selected')} checked/>
                                     Default </label>
                 
-                                    <label className="btn btn-secondary">
+                                    <label className="btn btn-dark">
                                     <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
                                     Blossum
                                     </label>
                 
-                                    <label className="btn btn-secondary">
+                                    <label className="btn btn-dark">
                                     <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
                                     PAM
                                     </label>
@@ -94,7 +104,7 @@ export default class QueryBox extends React.Component{
                 
 
 
-                <button type="button" className="btn btn-primary" onClick={(props) => {this.setInput(props)}}>Submit</button>
+                <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
             </form>
         </div>
         )

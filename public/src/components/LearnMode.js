@@ -18,16 +18,18 @@ export default class LearnMode extends React.Component{
 
   render(){
     return (
-      <div>
+      
           <div className="row">
-          <div className="col-md-3">
-            <QueryBox onQueryChange = {(query) => this.queryChange(query)}/>
+
+              <div className="col-md-3">
+                <QueryBox onQueryChange = {(query) => this.queryChange(query)} mode={this.props.mode}/>
+              </div>
+
+              <div className="col-md-9 jumbotron">
+                <ResultBox query={this.state} /> 
+              </div>
           </div>
-          <div className="col-md-9 jumbotron">
-            <ResultBox query={this.state} /> 
-          </div>
-          </div>
-      </div>
+      
     );
   }
 };

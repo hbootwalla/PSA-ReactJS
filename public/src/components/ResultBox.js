@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MatrixItem from './MatrixItem';
 
 const ResultBox = (props) => {
-    props = props || {query: {queryResult: '', databaseResult: ''} };    
+    // props =  {query: {queryResult: '', databaseResult: ''} };    
     console.log(props);
     const titles = props.query.database.split("").map((val)=>{
         return(
@@ -14,8 +14,7 @@ function iterate(row, rowIndex){
     return row.map((val, index)=>{
         if(index > 0){
             return(
-                    <MatrixItem cell = {props.query.matrix[rowIndex][index]} 
-                    />
+                    <MatrixItem cell = {props.query.matrix[rowIndex][index]} />
             );
         }   
         else{
@@ -62,7 +61,7 @@ function iterate(row, rowIndex){
                             
                         </thead>
                         <tbody>
-                        {matrixValues}    
+                            {matrixValues}    
                         </tbody>
                     </table>
                     {resultDiv()}

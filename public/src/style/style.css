@@ -47,7 +47,9 @@
     padding-bottom: 15px;
 }
 
-
+.inputCell{
+    width: 100%;
+}
 nav {
     text-align: center;
     margin: 0px 0 0 ;
@@ -64,6 +66,8 @@ nav {
     
     nav a {
       font-weight: normal;
+      font-size: 20px;
+      justify-content: center;
       padding: 10px 5px;
       color: #FF5400
     }

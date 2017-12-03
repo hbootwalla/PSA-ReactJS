@@ -21,6 +21,7 @@ const NavBar =(props)=>{
               <li className="nav-item">
               <a className="nav-link" href="#" onClick={props.setFAQ}>FAQ</a>
             </li>
+            
             </ul>
           
           </div>

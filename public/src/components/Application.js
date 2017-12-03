@@ -61,9 +61,9 @@ export default class Application extends React.Component{
             <div>
                 <NavBar setLearn={this.setLearn} setDIY={this.setDIY}
                 setFAQ = {this.setFAQ} />
-                {(this.state.learn) && <LearnMode />}
-                {(this.state.diy) && <DIY />}
-                {(this.state.faq) && <FAQ />}
+                {(this.state.learn) && <LearnMode mode={this.state}/>}
+                {(this.state.diy) && <DIY mode={this.state}/>}
+                {(this.state.faq) && <FAQ mode={this.state} />}
             </div>
         )
     }

@@ -1,5 +1,5 @@
 {
-  "name": "ProteinSequenceAlignmentGUI",
+  "name": "Protein-Sequence-Alignment-GUI",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/hbootwalla/protein-seq-alignment-gui.git",
@@ -21,6 +21,7 @@
     "file-loader": "^1.1.5",
     "live-server": "^1.2.0",
     "react": "^16.2.0",
+    "react-bootstrap-table": "^4.2.0",
     "react-dom": "^16.2.0",
     "react-navbar": "^1.0.0",
     "react-transition-group": "^2.2.1",
