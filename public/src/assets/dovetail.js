@@ -10,14 +10,16 @@
                 this.Mark = 0;
         }
     
-        var NeedlemanWunsch = function(gap, query, database){
-            return new NeedlemanWunsch.init(gap, query, database);
+        var Dovetail = function(gap, query, database){
+            return new Dovetail.init(gap, query, database);
         }
     
+        
     
-        NeedlemanWunsch.prototype={
+        Dovetail.prototype={
     
             calculateMatrix: function(){
+
                 for(var i = 1; i < this.query.length + 1; i++){
                     var q = this.query[i-1];
                     for(var j = 1; j < this.database.length + 1; j++){
@@ -45,16 +47,34 @@
                 }
                 return this.matrix;
             },
-    
+
             getResult: function(){
-                var i = this.query.length;
-                var j = this.database.length;
-                //this.matrix[i][j].Mark = 1;
+                this.max = 0;
+                this.maxI = 0;
+                this.maxJ = 0;
+                
+                for(let i = 0; i <= this.query.length; i++){
+                    if(this.matrix[i][this.database.length].Score > this.max){
+                        this.max = this.matrix[i][this.database.length].Score;
+                        this.maxI = i;
+                        this.maxJ = this.database.length;
+                    }
+                }
+                
+                for(let i = 0; i <= this.database.length; i++){
+                    if(this.matrix[this.query.length][i].Score > this.max){
+                        this.max = this.matrix[this.query.length][i].Score;
+                        this.maxI = this.query.length;
+                        this.maxJ = i;
+                    }
+                }
+                var i = this.maxI;
+                var j = this.maxJ;
                 var sTraceback = "";
                 var tTraceback = "";
+                this.matrix[this.maxI][this.maxJ].Mark = 1;
                 while(i>0 && j>0){
                     var dir = this.matrix[i][j].Direction;
-                    this.matrix[i][j].Mark = 1;
                     if(dir == DIAG){
                         sTraceback += this.query[i-1];
                         tTraceback += this.database[j-1];
@@ -66,22 +86,10 @@
                         j--;
                     }
                     else if(dir == TOP){
-                         sTraceback+= this.query[i-1];
-                         tTraceback += ' _ ';
-                         i--;
+                        sTraceback += this.query[i-1];
+                        tTraceback += ' _ ';
+                        i--;
                     }
-                    
-                }
-                while(i>0){
-                    tTraceback += ' _ ';
-                    sTraceback += this.query[i-1];
-                    i--;
-                    this.matrix[i][j].Mark = 1;
-                }
-                while(j>0){
-                    sTraceback += ' _ ';
-                    tTraceback += this.database[j-1];
-                    j--;
                     this.matrix[i][j].Mark = 1;
                 }
                 sTraceback = sTraceback.split("").reverse().join("");
@@ -97,28 +105,28 @@
             }
         }
     
-        NeedlemanWunsch.init = function(gap=0, query=' ', database=' '){
+        Dovetail.init = function(gap=0, query=' ', database=' '){
             this.gap = gap;
             this.query = query;
             this.database = database;
             this.matrix = [];
             this.matrix[0] = [];
+            this.maxI = -1;
+            this.maxJ = -1;
+            this.max = -1;
             var score = 0;
             this.matrix[0][0] = new Cell(DIAG, score);
             for(var i = 1; i < this.query.length + 1; i++){
-                score += this.gap;
                 this.matrix[i] = [];
                 this.matrix[i].push(new Cell(LEFT, score));
             }
-            score = 0;
             for(var i = 1; i < this.database.length + 1; i++){
-                score += this.gap;
                 this.matrix[0].push(new Cell(TOP, score));
             }
         };
     
-        NeedlemanWunsch.init.prototype = NeedlemanWunsch.prototype; 
+        Dovetail.init.prototype = Dovetail.prototype; 
         
-        global.NeedlemanWunsch = NeedlemanWunsch;
+        global.Dovetail = Dovetail;
     
     })(window);

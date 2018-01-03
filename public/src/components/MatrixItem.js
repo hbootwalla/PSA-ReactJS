@@ -11,7 +11,6 @@ export default class MatrixItem extends Component {
         let LEFT = 1;
         let TOP = 2;
         let DIAG = 3;
-        console.log(cell.Direction);
         if(cell.Direction == LEFT){
             return (
                 <i className="fa fa-arrow-right"></i>

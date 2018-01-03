@@ -4,16 +4,18 @@ export default class QueryBox extends React.Component{
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {queryString: '', databaseString:'', gap: 0};
+        this.updateMethod = this.updateMethod.bind(this);
+        this.updateScoringMatrix = this.updateScoringMatrix.bind(this);
+        this.state = {queryString: '', databaseString:'', gap: 0, scoringMatrix: 'default', method:'global'};
         
     }
 
     handleSubmit(event){
-        if(this.props.mode.learn === true)
+        // if(this.props.mode.learn === true)
+        //     this.setInput(event);
+        // else if(this.props.mode.diy === true){
             this.setInput(event);
-        else if(this.props.mode.diy === true){
-            this.props.display(this.state);
-        }
+        //}
     }
 
     setInput(props){
@@ -22,25 +24,31 @@ export default class QueryBox extends React.Component{
 
     updateQueryValue(event){
         this.setState({
-            queryString : event.target.value,
-            databaseString: this.state.databaseString,
-            gap: this.state.gap
+            queryString : event.target.value
         });
     }
 
     updateDatabaseValue(event){
         this.setState({
-            queryString : this.state.queryString,
-            databaseString: event.target.value,
-            gap: this.state.gap
+            databaseString: event.target.value
         });
     }
 
     updateGapValue(event){
         this.setState({
-            queryString : this.state.queryString,
-            databaseString: this.state.databaseString,
             gap: event.target.value
+        });
+    }
+
+    updateMethod(event){
+        this.setState({
+           method: event.target.value 
+        });
+    }
+
+    updateScoringMatrix(event){
+        this.setState({
+           scoringMatrix: event.target.value 
         });
     }
 
@@ -61,21 +69,21 @@ export default class QueryBox extends React.Component{
                 </div>
            
                 <div className ="alignment-type">
-                <div>Select the Alignment Type</div>
+                <div>Alignment Type</div>
 
                 <div className="btn-group" data-toggle="buttons">
 
-                    <label className="btn btn-dark">
-                    <input type="radio" name="options" id="option1" onChange={console.log('selected')} checked/>
+                    <label className={this.state.method == "global" ? "btn btn-primary active" : "btn btn-primary"}>
+                    <input type="radio" name="options" id="option1" value="global" onChange={this.updateMethod} />
                     Global </label>
 
-                    <label className="btn btn-dark">
-                    <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
+                    <label className={this.state.method == "local" ? "btn btn-primary active" : "btn btn-primary"}>
+                    <input type="radio" name="options" id="option2" value="local" onChange={this.updateMethod} />
                     Local
                     </label>
 
-                    <label className="btn btn-dark">
-                    <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
+                    <label className={this.state.method == "dovetail" ? "btn btn-primary active" : "btn btn-primary"}>
+                    <input type="radio" name="options" id="option3" value="dovetail" onChange={this.updateMethod} />
                     Dovetail
                     </label>
             </div>
@@ -83,27 +91,24 @@ export default class QueryBox extends React.Component{
                 </div>
 
             <div className="matrix-type">
-                <div>Select the Scoring Matrix</div>
+                <div>Scoring Matrix</div>
                     <div className="btn-group" data-toggle="buttons">
                 
-                                    <label className="btn btn-dark">
-                                    <input type="radio" name="options" id="option1" onChange={console.log('selected')} checked/>
+                                    <label className={this.state.scoringMatrix == "default" ? "btn btn-primary removeShadow active" : "btn btn-primary removeShadow"} >
+                                    <input type="radio" name="options" id="option1" value="default" onChange={this.updateScoringMatrix} />
                                     Default </label>
                 
-                                    <label className="btn btn-dark">
-                                    <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
-                                    Blossum
+                                    <label className={this.state.scoringMatrix == "blosum" ? "btn btn-primary active" : "btn btn-primary"}>
+                                    <input type="radio" name="options" id="option2" value="blosum" onChange={this.updateScoringMatrix} />
+                                    BLOSUM
                                     </label>
                 
-                                    <label className="btn btn-dark">
-                                    <input type="radio" name="options" id="option2" onChange={console.log('selected')} />
+                                    <label className={this.state.scoringMatrix == "pam" ? "btn btn-primary active" : "btn btn-primary"}>
+                                    <input type="radio" name="options" id="option3" value="pam" onChange={this.updateScoringMatrix} />
                                     PAM
                                     </label>
-            </div>
                     </div>
-                
-
-
+                </div>
                 <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
             </form>
         </div>

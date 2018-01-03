@@ -6,8 +6,7 @@
     padding-top: 40px;
 }
 
-.table.resultTable {
-    max-width : 30%;
+resultTable {
     text-align: center;
 }
 
@@ -48,34 +47,93 @@
 }
 
 .inputCell{
-    width: 100%;
+    width:50%;
+    max-width: 50%;
 }
 nav {
     text-align: center;
     margin: 0px 0 0 ;
     padding: 10px 0;
     padding-bottom: 10px;
-    background-color: teal;
-    }
+    background-color: #007bff;
+    font-family: cursive;
+}
+
+.navbar-brand{
+    color: white;
+
+}
     
+table{
+    background-color: white;
+}
+
+table.table-bordered {
+    border: 13px;
+}
     
-    nav li {
-       display: inline-block;
-       padding: 5px 5px;
-    }
-    
-    nav a {
-      font-weight: normal;
-      font-size: 20px;
-      justify-content: center;
-      padding: 10px 5px;
-      color: #FF5400
-    }
-   
-    nav ul{
-        list-style: none;
-        margin: 0 2px;
-        padding: 0;
-        display: flex;
-        justify-content: space-around;
-      }
+nav li {
+    display: inline-block;
+    padding: 5px 5px;
+}
+
+nav a {
+    font-weight: normal;
+    font-size: 20px;
+    justify-content: center;
+    padding: 10px 5px;
+    color: white;
+    margin-top:5px;
+    font-family: cursive;
+}
+
+nav ul{
+    list-style: none;
+    margin: 0 0px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.green{
+    background-color: lightgreen;
+}
+
+.red{
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.defaultHeight {
+    height: 100%;
+}
+
+.outputCell{
+    font-weight: bold;
+    text-align:center;
+    width : 50%
+    display: inline;
+}
+
+.algoTitle {
+    text-align: center;
+    font-weight: bolder;
+    font-family: cursive;
+    margin-bottom:25px;
+}
+
+.zeroHeight{
+    height: 0px;
+}
+
+.removeShadow{
+    box-shadow: transparent;
+}
+
+.cardContainer{
+    margin: 10px 10px 10px 10px ;
+}
+
+.side_by_side{
+    display: inline-block;
+}
+

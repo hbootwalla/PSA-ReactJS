@@ -5,20 +5,17 @@ export default class ResultDIYCell extends React.Component{
         super(props);
         this.handleOut = this.handleOut.bind(this);
         this.state ={
-            val: '',
             ans: props.ans
         }
     }
 
     handleOut(event){
         event.preventDefault();
-        const ev = event.target;
-        console.log(ev.value);
+        const ev = event.target.value;
         this.setState(() =>{
-            
                 return(
                     {
-                        val: ev.value
+                        val: ev
                     }
                 )
             
@@ -27,24 +24,11 @@ export default class ResultDIYCell extends React.Component{
     
     render(){
         return(
-                    <td>
-                        <label>
-                           { (this.state.val) && 
-                            (this.state.val == this.state.ans) &&
-                            (<input className ="inputCell" type="text" onBlur= {this.handleOut}
-                            styles={{background: 'red'}} />)
-                            }
-                            
-                            { (this.state.val) && 
-                                (this.state.val != this.state.ans) &&
-                                (<input className ="inputCell" type="text" onBlur= {this.handleOut}
-                                styles={{background: 'green'}}/>)
-                            }
-
-                            {(!this.state.val) &&
-                                (<input className ="inputCell" type="text" onBlur= {this.handleOut} />)   
-                            }
-                        </label>
+                    <td className = {this.state.val ? ((this.state.val == this.state.ans) ? "green" : "red") : undefined}>
+                        <div className = "side_by_side">
+                             <input id="some" className ="inputCell" type="number" onBlur= {this.handleOut} /> 
+                             {(this.state.val && (this.state.val != this.state.ans)) && <span className="outputCell">{this.state.ans}</span>}
+                        </div>
                      </td>
            
             )

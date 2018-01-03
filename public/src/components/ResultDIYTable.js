@@ -2,6 +2,7 @@ import React from 'react';
 import ResultDIYCell from './ResultDIYCell';
 
 const ResultDIYTable = (props) =>{
+    console.log(props);
     
     const titles = props.query.database.split("").map((val)=>{
         return(
@@ -14,12 +15,12 @@ const ResultDIYTable = (props) =>{
         return row.map((val, index)=>{
             if(index > 0){
                 return(
-                        <ResultDIYCell ans = {props.query.matrix[rowIndex][index].val} />
+                        <ResultDIYCell key = {props.query.method + rowIndex + index + props.query.matrix[rowIndex][index].Score + Math.random()} ans = {props.query.matrix[rowIndex][index].Score} />
                 );
             }   
             else{
                 return (
-                    <td className="queryTag">
+                    <td className="queryTag" key = {props.query.method + props.query.query[rowIndex-1] + Math.random()}>
                         {props.query.query[rowIndex-1]}
                     </td>
                 )
@@ -54,10 +55,14 @@ const ResultDIYTable = (props) =>{
     
     return(
                         <div>
+                    {props.query.queryResult && props.query.method == "global" && (<h3 className = "algoTitle">Needleman Wunsch Algorithm</h3>)} 
+                    {props.query.queryResult && props.query.method == "local" && (<h3 className = "algoTitle">Smith Waterman Algorithm</h3>)} 
+                    {props.query.queryResult && props.query.method == "dovetail" && (<h3 className = "algoTitle">Dovetail Algorithm</h3>)}        
+                    
                                 <table className="table table-bordered table-striped">
                                     <thead>
                                             <tr>
-                                                <th></th>
+                                                {props.query.queryResult.length > 1 && <th></th>}
                                                 {titles}
                                             </tr>
                                     </thead>

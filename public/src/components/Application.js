@@ -15,6 +15,7 @@ export default class Application extends React.Component{
             diy:false,
             faq:false
         }
+        window.FAQ = faq;
     }
 
     setLearn(){
@@ -63,7 +64,7 @@ export default class Application extends React.Component{
                 setFAQ = {this.setFAQ} />
                 {(this.state.learn) && <LearnMode mode={this.state}/>}
                 {(this.state.diy) && <DIY mode={this.state}/>}
-                {(this.state.faq) && <FAQ mode={this.state} />}
+                {(this.state.faq) && <FAQ mode={this.state} faq = {window.FAQ} />}
             </div>
         )
     }
