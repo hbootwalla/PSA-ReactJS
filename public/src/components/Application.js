@@ -4,68 +4,28 @@ import DIY from './DIY';
 import NavBar from './NavBar';
 import FAQ from './FAQ';
 
+import {
+    BrowserRouter as Router,
+    Route
+  } from 'react-router-dom';
+
 export default class Application extends React.Component{
     constructor(props){
-        super(props);
-       this.setLearn= this.setLearn.bind(this);
-       this.setDIY= this.setDIY.bind(this);
-       this.setFAQ= this.setFAQ.bind(this);
-        this.state = {
-            learn:true,
-            diy:false,
-            faq:false
-        }
-        window.FAQ = faq;
-    }
-
-    setLearn(){
-        this.setState(()=>{
-            return(
-                {
-                    learn: true,
-                    diy:false,
-                    faq:false
-                }
-                
-            )
-        })
-    }
-
-    setDIY(){
-        this.setState(()=>{
-            return(
-                {
-                    learn: false,
-                    diy:true,
-                    faq:false
-                }
-                
-            )
-        })
-    }
-
-    setFAQ(){
-        this.setState(()=>{
-            return(
-                {
-                    learn: false,
-                    diy:false,
-                    faq:true
-                }
-                
-            )
-        })
+        super(props);       
     }
 
     render(){
         return(
-            <div>
-                <NavBar setLearn={this.setLearn} setDIY={this.setDIY}
-                setFAQ = {this.setFAQ} />
-                {(this.state.learn) && <LearnMode mode={this.state}/>}
-                {(this.state.diy) && <DIY mode={this.state}/>}
-                {(this.state.faq) && <FAQ mode={this.state} faq = {window.FAQ} />}
-            </div>
+            <Router>
+                <div>
+                    <NavBar />
+                    <div>
+                    <Route exact path='/' component = {LearnMode} />
+                    <Route exact path='/diy' component = {DIY} />
+                    <Route exact path='/faq' component = {FAQ} />
+                    </div>
+                </div>
+            </Router>
         )
     }
 }

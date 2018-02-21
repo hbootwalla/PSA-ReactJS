@@ -4,10 +4,10 @@ import ResultDIYCell from './ResultDIYCell';
 const ResultDIYTable = (props) =>{
     console.log(props);
     
-    const titles = props.query.database.split("").map((val)=>{
+    const titles = props.query.database.split("").map((val, index)=>{
         return(
             
-            <th>{val}</th>
+            <th key={val+index}>{val}</th>
         );
     });
 
@@ -31,7 +31,7 @@ const ResultDIYTable = (props) =>{
         const matrixValues = props.query.matrix.map((row,index)=>{
             if(index > 0){
                 return(
-                    <tr>
+                    <tr key={row+index}>
                         {iterate(row, index)}
                     </tr>
                 );
@@ -54,24 +54,24 @@ const ResultDIYTable = (props) =>{
         }
     
     return(
-                        <div>
-                    {props.query.queryResult && props.query.method == "global" && (<h3 className = "algoTitle">Needleman Wunsch Algorithm</h3>)} 
-                    {props.query.queryResult && props.query.method == "local" && (<h3 className = "algoTitle">Smith Waterman Algorithm</h3>)} 
-                    {props.query.queryResult && props.query.method == "dovetail" && (<h3 className = "algoTitle">Dovetail Algorithm</h3>)}        
+        <div>
+        {props.query.queryResult && props.query.method == "global" && (<h3 className = "algoTitle">Needleman Wunsch Algorithm</h3>)} 
+        {props.query.queryResult && props.query.method == "local" && (<h3 className = "algoTitle">Smith Waterman Algorithm</h3>)} 
+        {props.query.queryResult && props.query.method == "dovetail" && (<h3 className = "algoTitle">Dovetail Algorithm</h3>)}        
+        
+                    <table className="table table-bordered table-striped">
+                        <thead>
+                                <tr>
+                                    {props.query.queryResult.length > 1 && <th></th>}
+                                    {titles}
+                                </tr>
+                        </thead>
                     
-                                <table className="table table-bordered table-striped">
-                                    <thead>
-                                            <tr>
-                                                {props.query.queryResult.length > 1 && <th></th>}
-                                                {titles}
-                                            </tr>
-                                    </thead>
-                                
-                                    <tbody>
-                                              {matrixValues}
-                                    </tbody>
-                                </table>
-                        </div>
+                        <tbody>
+                            {matrixValues}
+                        </tbody>
+                    </table>
+        </div>
     )
 }
 

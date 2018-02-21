@@ -7,7 +7,7 @@ const ResultBox = (props) => {
     
     const titles = props.query.database.split("").map((val)=>{
         return(
-            <th>{val}</th>
+            <th key={val}>{val}</th>
         );
     });
 

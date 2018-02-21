@@ -10,12 +10,7 @@ export default class DIY extends React.Component{
     }
 
     queryChange(newQuery){
-        // var NW = window.NeedlemanWunsch(-3, newQuery.queryString, newQuery.databaseString);
-        // var matrix = NW.calculateMatrix();
-        // var result = NW.getResult();
-        // this.setState({query: newQuery.queryString, database: newQuery.databaseString, 
-        //     queryResult: result.query, databaseResult: result.database, matrix, gap: newQuery.gap});
-            if(newQuery.scoringMatrix === "default")
+          if(newQuery.scoringMatrix === "default")
             window.scoringMatrix = DefaultScoringMatrix;
           if(newQuery.scoringMatrix === "blosum")
             window.scoringMatrix = Blosum62Matrix;
@@ -39,7 +34,7 @@ export default class DIY extends React.Component{
             <div>
                 <div className ="row">
                     <div className="col-md-3">
-                    <QueryBox mode={this.props.mode} onQueryChange = {(query) => this.queryChange(query)} />
+                    <QueryBox onQueryChange = {(query) => this.queryChange(query)} />
                     </div>
                     <div className= "col-md-9 jumbotron defaultHeight">
                     <div className= "container">
